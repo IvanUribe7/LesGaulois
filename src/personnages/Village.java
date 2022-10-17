@@ -32,7 +32,7 @@ public class Village {
 	}
 	
 	public static void main(String[] args) {
-		Village village = new Village("Village des Irréductibles",5);
+		Village village = new Village("Village des Irréductibles",30);
 		//*Gaulois gaulois = village.trouverHabitant(30); le programme tente d'accéder à un tableau avec un indice invalide.//*
 		//*On cherche a l'indice 30 alors que la liste va de 0 a 29 //*
 		Chef abraracourcix = new Chef("Abraracourcix",6,village);
