@@ -3,6 +3,8 @@ package personnages;
 public class Romain {
 	private String nom;
 	private int force;
+	private Equipement[] equipements;
+	private int nbEquipement = 0;
 	
 	public Romain(String nom, int force) {
 		this.nom = nom;
@@ -28,9 +30,48 @@ public class Romain {
 		}
 		assert(force+forceCoup>force);
 	}
+	
+	public boolean verifEq(Equipement[] equipements, Equipement equipement1, Equipement equipement2) {
+		boolean succes=false;
+		if (equipements[0]==equipement1 && equipements[1]==equipement2 ) {
+			return succes=true;}
+		if (equipements[1]==equipement1 && equipements[0]==equipement2 ) {
+			return succes=true;}
+		else {
+			return succes;
+		}	
+		
+	}
+	
+	public void sEquiper(Equipement equipement){
+		switch(nbEquipement) {
+		case 0: System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement);
+					equipements[nbEquipement] = equipement;
+					nbEquipement =  nbEquipement + 1 ;break;
+		
+		case 1:
+			System.out.println(equipements[0]);
+			
+		if(equipements[0]==equipement) {
+				System.out.println("Le soldat " + nom + " possède déjà un " + equipement);return;}
+			System.out.println(equipements[0]);
+			
+			if(equipements[0]!=equipement) {
+				System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement);
+				equipements[1] = equipement;
+				nbEquipement =  nbEquipement + 1 ;
+			}break;
+		
+		case 2:if(verifEq(equipements,equipement.BOUCLIER,equipement.CASQUE) ) {
+			System.out.println("Le soldat " + nom + " est déjà bien protégé");	
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
-		Romain Minus = new Romain("Minus",6);
-		
-		
+		Romain minus = new Romain("Minus",6);
+		minus.sEquiper(Equipement.BOUCLIER);
+		minus.sEquiper(Equipement.BOUCLIER);
+
 	}
 }
