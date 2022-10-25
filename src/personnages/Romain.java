@@ -45,9 +45,9 @@ public class Romain {
 		int oldForce = force;
 		force -= calculResistanceEquipement(forceCoup);
 		if(force > 0) { 
+			equipementEjecte = ejecterEquipement();
 			parler("Aïe");}
 		else {
-			equipementEjecte = ejecterEquipement();
 			parler("J'abandonne...");
 		}
 		// post condition la force à diminuer
@@ -85,7 +85,7 @@ public class Romain {
 		for (int i = 0; i < nbEquipement; i++) {
 			if (equipements[i] != null) {
 				equipementEjecte[nbEquipementEjecte] = equipements[i];
-				nbEquipementEjecte++;
+				nbEquipementEjecte+=1;
 				equipements[i] = null;
 			}
 		}
@@ -116,17 +116,21 @@ public class Romain {
 			if(equipements[0]!=equipement) {
 				System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement);
 				equipements[1] = equipement;
-				nbEquipement =  nbEquipement + 1 ;
-			}return;
+				nbEquipement =  nbEquipement + 1 ;return;
+			}
 		
-		case 2:if(verifEq(equipements,equipement.BOUCLIER,equipement.CASQUE) ) {
+		case 2:
+			if( verifEq(equipements,equipement.BOUCLIER,equipement.CASQUE)) {
 			System.out.println("Le soldat " + nom + " est déjà bien protégé");	
-			return;
 			}
 		}
 	}
 	
 	public static void main(String[] args) {
-
+		Romain minus = new Romain("Minus", 6);
+		minus.sEquiper(Equipement.BOUCLIER);
+		minus.sEquiper(Equipement.BOUCLIER);
+		minus.sEquiper(Equipement.CASQUE);
+		
 	}
 }

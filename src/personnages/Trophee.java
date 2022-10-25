@@ -17,7 +17,7 @@ public class Trophee {
 		return gaulois;
 	}
 
-	public String donnerNom(Gaulois gaulois) {
+	public String donnerNom() {
 		return gaulois.getNom();
 	}
 }

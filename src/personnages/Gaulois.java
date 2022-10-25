@@ -10,6 +10,11 @@ public class Gaulois {
 		this.nom = nom;
 		this.force = force;
 	}
+	
+	public Equipement[] getTrophees() {
+		return trophees;
+	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -34,6 +39,17 @@ public class Gaulois {
 					this.trophees[nbTrophees] = tropheesGagne[i];
 				}
 			}
+	
+	public void faireUneDonation(Musee musee) {
+		String phrase = "";
+		while(nbTrophees > 0) {
+			nbTrophees-=1;
+			musee.donnerTrophees(this , trophees[nbTrophees]);
+			phrase += "-" + trophees[nbTrophees] + "\n";
+			trophees[nbTrophees]=null;
+		}
+		parler("Je donne au musee tous mes trophees : \n" + phrase);
+	}
 
 	public String toString() {
 		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
@@ -45,8 +61,8 @@ public class Gaulois {
 	}
 	public static void main(String[] args) {
 		Gaulois asterix= new Gaulois("Asterix",8);
-		System.out.println(asterix);
-		System.out.println(asterix.effetPotion);
+		Musee musee = new Musee();
+		asterix.faireUneDonation(musee);
 
 }
 
